@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: redis-cache-lab
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 500ms
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+cache-lab:
+  product-cache:
+    ttl: ${PRODUCT_CACHE_TTL:60s}
+    key-prefix: "cache-lab:product:"
+  simulated-db-latency: ${SIMULATED_DB_LATENCY:550ms}
