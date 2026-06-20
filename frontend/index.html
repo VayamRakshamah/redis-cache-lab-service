@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redis Cache Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <h1>Redis Cache Lab</h1>
+          <p>Spring Boot cache-aside demo showing miss, hit, bypass, TTL, and latency behavior against Redis.</p>
+        </div>
+        <div class="status-strip" aria-label="Cache metrics">
+          <div>
+            <span id="hitRate">0%</span>
+            <small>Hit rate</small>
+          </div>
+          <div>
+            <span id="totalRequests">0</span>
+            <small>Requests</small>
+          </div>
+          <div>
+            <span id="ttlBadge">--</span>
+            <small>TTL</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="control-panel" aria-label="Product lookup controls">
+          <label for="productId">Product ID</label>
+          <div class="search-row">
+            <select id="productId">
+              <option>P1001</option>
+              <option>P1002</option>
+              <option>P1003</option>
+              <option>P1004</option>
+            </select>
+            <button id="fetchButton">Fetch</button>
+          </div>
+          <div class="button-row">
+            <button id="fetchAgainButton" class="secondary">Fetch again</button>
+            <button id="bypassButton" class="secondary">Bypass</button>
+            <button id="clearButton" class="danger">Clear cache</button>
+          </div>
+          <p class="hint">Suggested demo: fetch once for miss, fetch again for hit, clear cache, then fetch once more.</p>
+        </aside>
+
+        <section class="result-panel" aria-live="polite">
+          <div class="result-header">
+            <div>
+              <span id="sourceBadge" class="badge neutral">Waiting</span>
+              <h2 id="productName">Choose a product to inspect cache behavior</h2>
+            </div>
+            <div class="latency">
+              <strong id="latencyMs">--</strong>
+              <span>ms</span>
+            </div>
+          </div>
+
+          <dl class="product-grid">
+            <div>
+              <dt>Product</dt>
+              <dd id="productCode">--</dd>
+            </div>
+            <div>
+              <dt>Category</dt>
+              <dd id="category">--</dd>
+            </div>
+            <div>
+              <dt>Price</dt>
+              <dd id="price">--</dd>
+            </div>
+            <div>
+              <dt>Inventory</dt>
+              <dd id="inventory">--</dd>
+            </div>
+            <div>
+              <dt>Store</dt>
+              <dd id="storeId">--</dd>
+            </div>
+            <div>
+              <dt>TTL remaining</dt>
+              <dd id="ttlSeconds">--</dd>
+            </div>
+          </dl>
+
+          <div class="timeline" id="timeline">
+            <div class="step active">Request</div>
+            <div class="step">API</div>
+            <div class="step">Redis check</div>
+            <div class="step db">DB fallback</div>
+            <div class="step write">Redis write</div>
+            <div class="step active">Response</div>
+          </div>
+        </section>
+      </section>
+
+      <section class="evidence">
+        <div>
+          <h3>API contract</h3>
+          <code>GET /api/products/P1001</code>
+          <code>GET /api/products/P1001?bypassCache=true</code>
+          <code>DELETE /api/cache/products/P1001</code>
+        </div>
+        <div>
+          <h3>Response proof</h3>
+          <code>X-Cache-Status: CACHE_HIT</code>
+          <code>X-Product-TTL-Seconds: 47</code>
+          <code>X-Origin-Latency-Ms: 18</code>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
