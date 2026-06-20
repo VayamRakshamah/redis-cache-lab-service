@@ -1,6 +1,7 @@
 package in.vinaygupta.rediscachelab.cache;
 
 import java.time.Duration;
+import java.util.Locale;
 import java.util.Optional;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -56,6 +57,6 @@ public class ProductCache {
     }
 
     private String key(String productId) {
-        return keyPrefix + productId.toUpperCase();
+        return keyPrefix + productId.toUpperCase(Locale.ROOT);
     }
 }

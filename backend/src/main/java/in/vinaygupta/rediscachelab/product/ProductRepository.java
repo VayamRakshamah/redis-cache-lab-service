@@ -2,6 +2,7 @@ package in.vinaygupta.rediscachelab.product;
 
 import java.math.BigDecimal;
 import java.time.Duration;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class ProductRepository {
 
     public Optional<Product> findById(String productId) {
         sleepForSimulatedDatabaseCost();
-        return Optional.ofNullable(products.get(productId.toUpperCase()));
+        return Optional.ofNullable(products.get(productId.toUpperCase(Locale.ROOT)));
     }
 
     private void sleepForSimulatedDatabaseCost() {
