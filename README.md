@@ -82,6 +82,8 @@ GitHub Pages only hosts the frontend. The Spring Boot API and Redis still need t
 https://vayamrakshamah.github.io/redis-cache-lab-service/?api=https://your-backend.example.com/api
 ```
 
+Backend hosting notes are in [deploy-render.md](deploy-render.md).
+
 Suggested demo path:
 
 1. Fetch `P1001` once and observe `CACHE_MISS` with slower latency.
@@ -131,5 +133,6 @@ redis-cache-lab/
   docker-compose.yml
   .env.example
   api-contract.md
+  deploy-render.md
   run-local.md
 ```

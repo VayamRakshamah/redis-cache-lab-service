@@ -37,6 +37,7 @@ PRODUCT_CACHE_TTL=60s
 SIMULATED_DB_LATENCY=550ms
 REDIS_HOST=redis
 REDIS_PORT=6379
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 ```
 
 Use a higher simulated database latency when recording the portfolio video so the cache hit improvement is immediately visible.
