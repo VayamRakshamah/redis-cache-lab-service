@@ -69,6 +69,19 @@ Then open:
 - Backend health: `http://localhost:8080/actuator/health`
 - Metrics: `http://localhost:8080/api/metrics/cache`
 
+## GitHub Deployment
+
+The repository includes GitHub Actions for:
+
+- CI validation on pushes and pull requests.
+- GitHub Pages deployment for the static dashboard in `frontend/`.
+
+GitHub Pages only hosts the frontend. The Spring Boot API and Redis still need to run elsewhere, such as a local Docker Compose stack or a backend hosting platform. To point the deployed dashboard at a backend, pass the API base URL:
+
+```text
+https://vayamrakshamah.github.io/redis-cache-lab-service/?api=https://your-backend.example.com/api
+```
+
 Suggested demo path:
 
 1. Fetch `P1001` once and observe `CACHE_MISS` with slower latency.

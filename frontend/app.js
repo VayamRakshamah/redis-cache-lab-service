@@ -1,4 +1,6 @@
-const API_BASE = "http://localhost:8080/api";
+const DEFAULT_API_BASE = "http://localhost:8080/api";
+const queryApiBase = new URLSearchParams(window.location.search).get("api");
+const API_BASE = (window.REDIS_CACHE_LAB_API_BASE || queryApiBase || DEFAULT_API_BASE).replace(/\/$/, "");
 
 const els = {
   productId: document.querySelector("#productId"),

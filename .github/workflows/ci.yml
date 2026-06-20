@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate Compose file
+        run: docker compose config
+
+      - name: Check frontend JavaScript
+        run: node --check frontend/app.js
+
+      - name: Build backend image and run Maven tests
+        run: docker compose build backend
