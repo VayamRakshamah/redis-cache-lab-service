@@ -36,10 +36,10 @@ Use `SPRING_DATA_REDIS_URL` for hosted Redis because Spring Boot maps it to `spr
 After Render deploys the backend, run:
 
 ```bash
-curl https://your-render-service.onrender.com/actuator/health
-curl -i https://your-render-service.onrender.com/api/products/P1001
-curl -i https://your-render-service.onrender.com/api/products/P1001
-curl https://your-render-service.onrender.com/api/metrics/cache
+curl https://redis-cache-lab-service.onrender.com/actuator/health
+curl -i https://redis-cache-lab-service.onrender.com/api/products/P1001
+curl -i https://redis-cache-lab-service.onrender.com/api/products/P1001
+curl https://redis-cache-lab-service.onrender.com/api/metrics/cache
 ```
 
 The first product call should return `CACHE_MISS`; the second should return `CACHE_HIT`.
@@ -49,11 +49,11 @@ The first product call should return `CACHE_MISS`; the second should return `CAC
 Open the dashboard with the hosted API URL:
 
 ```text
-https://vayamrakshamah.github.io/redis-cache-lab-service/?api=https://your-render-service.onrender.com/api
+https://vayamrakshamah.github.io/redis-cache-lab-service/?api=https://redis-cache-lab-service.onrender.com/api
 ```
 
 If GitHub Pages redirects to the custom domain, use:
 
 ```text
-https://vinaygupta.in/redis-cache-lab-service/?api=https://your-render-service.onrender.com/api
+https://vinaygupta.in/redis-cache-lab-service/?api=https://redis-cache-lab-service.onrender.com/api
 ```

@@ -4,6 +4,14 @@ Spring Boot + Redis lab that demonstrates the cache-aside pattern with visible h
 
 This is intentionally small: the project is built to act as portfolio proof for backend work around Redis caching, API design, observability, and production-style local execution.
 
+## Live Deployment
+
+- Frontend dashboard: [https://vinaygupta.in/redis-cache-lab-service/](https://vinaygupta.in/redis-cache-lab-service/)
+- Frontend connected to hosted API: [https://vinaygupta.in/redis-cache-lab-service/?api=https://redis-cache-lab-service.onrender.com/api](https://vinaygupta.in/redis-cache-lab-service/?api=https://redis-cache-lab-service.onrender.com/api)
+- Backend health: [https://redis-cache-lab-service.onrender.com/actuator/health](https://redis-cache-lab-service.onrender.com/actuator/health)
+- Product API example: [https://redis-cache-lab-service.onrender.com/api/products/P1001](https://redis-cache-lab-service.onrender.com/api/products/P1001)
+- Cache metrics: [https://redis-cache-lab-service.onrender.com/api/metrics/cache](https://redis-cache-lab-service.onrender.com/api/metrics/cache)
+
 ## What It Demonstrates
 
 - Cache-aside read path: API checks Redis first, falls back to a simulated slow repository, then writes back to Redis.
@@ -79,7 +87,7 @@ The repository includes GitHub Actions for:
 GitHub Pages only hosts the frontend. The Spring Boot API and Redis still need to run elsewhere, such as a local Docker Compose stack or a backend hosting platform. To point the deployed dashboard at a backend, pass the API base URL:
 
 ```text
-https://vayamrakshamah.github.io/redis-cache-lab-service/?api=https://your-backend.example.com/api
+https://vinaygupta.in/redis-cache-lab-service/?api=https://redis-cache-lab-service.onrender.com/api
 ```
 
 Backend hosting notes are in [deploy-render.md](deploy-render.md).
